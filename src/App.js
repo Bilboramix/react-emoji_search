@@ -24,12 +24,8 @@ const App = () => {
               return <Line key={index} title={emoji.title} symbol={emoji.symbol} />;
             })
           : emojiList.map((emoji, index) => {
-              const rSearch = new RegExp(/searching/i);
-              console.log("test");
-              if (rSearch === emoji.keywords) {
-                return <Line key={index} title={emoji.title} symbol={emoji.symbol} />;
-              }
-              return <p>test1</p>;
+              const matches = emoji.keywords.match(searching);
+              return <p>{matches}</p>;
             })}
       </main>
       <Footer />
