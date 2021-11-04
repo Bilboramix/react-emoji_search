@@ -25,7 +25,13 @@ const App = () => {
             })
           : emojiList.map((emoji, index) => {
               const matches = emoji.keywords.match(searching);
-              return <p>{matches}</p>;
+              const keyMatches = [];
+              if (matches) {
+                keyMatches.push(emoji);
+              }
+              return keyMatches.map((emoji, index) => {
+                return <Line key={index} title={emoji.title} symbol={emoji.symbol} />;
+              });
             })}
       </main>
       <Footer />
