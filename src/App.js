@@ -24,14 +24,7 @@ const App = () => {
               return <Line key={index} title={emoji.title} symbol={emoji.symbol} />;
             })
           : emojiList.map((emoji, index) => {
-              const matches = emoji.keywords.match(searching);
-              const keyMatches = [];
-              if (matches) {
-                keyMatches.push(emoji);
-              }
-              return keyMatches.map((emoji, index) => {
-                return <Line key={index} title={emoji.title} symbol={emoji.symbol} />;
-              });
+              return emojiList[index].keywords.indexOf(searching) !== -1 && <Line key={index} title={emoji.title} symbol={emoji.symbol} />;
             })}
       </main>
       <Footer />
